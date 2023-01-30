@@ -1,0 +1,49 @@
+/* _content/PagedListViewer/Views/Shared/_Layout.cshtml.rz.scp.css */
+/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+a.navbar-brand[b-nmxpd5rgnc] {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+a[b-nmxpd5rgnc] {
+  color: #0077cc;
+}
+
+.btn-primary[b-nmxpd5rgnc] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.nav-pills .nav-link.active[b-nmxpd5rgnc], .nav-pills .show > .nav-link[b-nmxpd5rgnc] {
+  color: #fff;
+  background-color: #1b6ec2;
+  border-color: #1861ac;
+}
+
+.border-top[b-nmxpd5rgnc] {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom[b-nmxpd5rgnc] {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow[b-nmxpd5rgnc] {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy[b-nmxpd5rgnc] {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+.footer[b-nmxpd5rgnc] {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  line-height: 60px;
+}

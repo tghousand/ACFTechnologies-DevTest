@@ -1,0 +1,63 @@
+﻿@using X.PagedList.Mvc.Core
+@using X.PagedList.Web.Common
+@model X.PagedList.IPagedList<PagedListViewer.Models.Photo>
+
+@{
+    ViewData["Title"] = "Paged List Viewer";
+    //This form is used to get an input to change the number of elements per page in the paged list.
+    using (Html.BeginForm("Index", "Photo", FormMethod.Get, new { id = "form1" }))
+}
+
+<h2>Paged List Viewer</h2>
+
+<div class ="paged-list-container">
+
+    @*This loop creates divisions to display elements in the paged list. It defaults to 10, but can be changed via the text box below.*@
+    @for(int i = 0; i < Model.Count; i++)
+    {
+        <div class ="paged-list-item">
+            <div class = "paged-list-item-title">
+                    <p>TITLE:&emsp; @Model[i].title</p>
+            </div>
+            <div class ="paged-list-item-image">
+                <a href="@Model[i].url"><img src="@Model[i].thumbnailUrl"/></a>
+            </div>
+        </div>
+    }
+
+
+    <div class="paged-list-container-footer">
+        <div class="paged-list-container-itemsperpage">
+            @*This input can be used to change the number of elements per page. Using the script below, the form submits and the page reloads using the submitted number.
+            Ideally, a way to improve this would be to have it work without reloading the page, but at this time I'm not sure how to accomplish that. 
+            Another limitation that could be improved upon is that the user has to press enter for the change to take place.*@
+            Items per page <input id="pageElements" name="pageElements" type="text" value="@ViewBag.pageSize">
+        </div>
+        <div class="paged-list-container-pager">
+            @*Here is the pager. It creates links to go to different pages in the list. Using ViewBag.pageSize, is also keep the number of elements per page specified consistent.
+            I tried to make it look as close to the example provided.*@
+            Page @Html.PagedListPager(@Model, page => Url.Action("Index", new { page, pageElements = ViewBag.pageSize }), new X.PagedList.Web.Common.PagedListRenderOptions
+            {
+                DisplayLinkToFirstPage = PagedListDisplayMode.Never,
+                DisplayLinkToLastPage = PagedListDisplayMode.Never,
+                DisplayLinkToNextPage = PagedListDisplayMode.Never,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.Never,
+                DisplayEllipsesWhenNotShowingAllPageNumbers = false,
+                LinkToIndividualPageFormat = "{0}",
+                DelimiterBetweenPageNumbers = ",",
+                MaximumPageNumbersToDisplay = 6
+            })
+        </div>
+    </div>
+</div>
+
+@*This script submits the user input to change the number of elements per page.*@
+<script type="text/javascript">
+    $(function(){
+        $("#pageSize").change(function(){
+            $("#form1").submit();
+        })
+    })
+</script>
+
+
